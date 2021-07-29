@@ -1,6 +1,8 @@
 // Configuration to activate "Vue" on the web inspector
 Vue.config.devtools = true;
 
+
+
 // Variable to activate "Vue"
 const root = new Vue({
     el: "#root",
@@ -15,6 +17,7 @@ const root = new Vue({
         ],
         //* New things to do to list
         newItem: "",
+
     },
     methods: {
         //* Function that deletes things done from the list
@@ -23,8 +26,11 @@ const root = new Vue({
         },
         //* Funzione that adds to the list new things to do 
         addNewItem() {
-            this.listItems.push(this.newItem);
-            this.newItem = "";
-        }
-    }
+            if (this.newItem.trim() !== "") {
+                this.listItems.push(this.newItem);
+                this.newItem = "";
+            }
+
+        },
+    },
 });

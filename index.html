@@ -16,6 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <!-- Title and icon page -->
+    <link rel="icon" href="./img/sticky-notes-2247431_1280.png">
     <title>To-do list</title>
 </head>
 
@@ -36,12 +38,18 @@
             <!-- Form section -->
             <section class="item-user d-flex justify-content-center">
                 <div class="input-group mb-3 mt-5 w-75 ">
-                    <input type="text" class="form-control" placeholder="... what to do?" v-model="newItem">
+                    <input type="text" class="form-control" placeholder="... what to do?"
+                        style="font-style:italic; font-family: 'Indie Flower', cursive;" v-model="newItem">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2"
-                        @click=" addNewItem">Add</button>
+                        style="font-family: 'Indie Flower', cursive;" @click=" addNewItem"><strong>Add</strong>
+                    </button>
                 </div>
             </section>
             <!-- List section -->
+            <div class="message font-style text-center m-30" v-if="!listItems.length">
+                <h2>Complimenti!</h2>
+                <h2>Hai completato tutte le cose da fare!</h2>
+            </div>
             <section class="list">
                 <div class="element-list d-flex justify-content-center mt-4">
                     <ul class="list-group list-group-flush font-style f-size-30">
