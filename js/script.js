@@ -30,6 +30,7 @@ const root = new Vue({
                 done: false
             },
         ],
+        searchText: "",
         //* New things to do to list
         newItem: "",
         isInputVisible: false,
@@ -63,6 +64,6 @@ const root = new Vue({
         },
         isDone(index) {
             return this.listItems[index].done;
-        }
+        },
     },
 });

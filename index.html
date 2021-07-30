@@ -49,6 +49,13 @@
                     </button>
                 </div>
             </section>
+            <!-- Search section -->
+            <section class="d-flex justify-content-center">
+                <div class="input-group w-25 mt-5">
+                    <input type="text" class="form-control" v-model="searchText">
+                    <span class="input-group-text"><i class="fas fa-search clickable"></i></span>
+                </div>
+            </section>
             <!-- List section -->
             <div class="message font-style text-center m-30" v-if="!listItems.length">
                 <h2>Complimenti!</h2>
