@@ -9,11 +9,26 @@ const root = new Vue({
     data: {
         //* To-do list
         listItems: [
-            "Fare la spesa",
-            "Prenotare un appuntamento dal parrucchiere",
-            "Stendere la lavatrice",
-            "Controllare la posta",
-            "Comprare nuove tende in cucina",
+            {
+                text: "Fare la spesa",
+                done: false
+            },
+            {
+                text: "Prenotare un appuntamento dal parrucchiere",
+                done: false
+            },
+            {
+                text: "Stendere la lavatrice",
+                done: false
+            },
+            {
+                text: "Controllare la posta",
+                done: false
+            },
+            {
+                text: "Comprare nuove tende in cucina",
+                done: false
+            },
         ],
         //* New things to do to list
         newItem: "",
@@ -28,7 +43,7 @@ const root = new Vue({
         //* Funzione that adds to the list new things to do 
         addNewItem() {
             if (this.newItem.trim() !== "") {
-                this.listItems.push(this.newItem);
+                this.listItems.push({ text: this.newItem, done: false });
                 this.toggleAddInput()
             } else {
                 this.newItem = "";
@@ -37,6 +52,17 @@ const root = new Vue({
         toggleAddInput() {
             this.isInputVisible = !this.isInputVisible;
             this.newItem = "";
+        },
+        toggleDone(index) {
+            const updateItem = this.listItems.map((item, i) => {
+                if (i === index) {
+                    item.done = !item.done
+                }
+                return item;
+            })
+        },
+        isDone(index) {
+            return this.listItems[index].done;
         }
     },
 });

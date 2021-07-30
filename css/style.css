@@ -16,3 +16,6 @@
 .m-30 {
     margin: 180px 0;
 }
+.clickable {
+    cursor: pointer;
+}
