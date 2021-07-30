@@ -39,8 +39,8 @@
         </header>
         <!-- * MAIN SECTION * -->
         <main class="container">
-            <!-- Form section
-            <section class="item-user d-flex justify-content-center">
+            <!-- Form section -->
+            <section class="item-user d-flex justify-content-center" v-if="!listItems.length">
                 <div class="input-group mb-3 mt-5 w-75 ">
                     <input type="text" class="form-control" placeholder="... what to do?"
                         style="font-style:italic; font-family: 'Indie Flower', cursive;" v-model="newItem">
@@ -48,7 +48,7 @@
                         style="font-family: 'Indie Flower', cursive;" @click=" addNewItem"><strong>Add</strong>
                     </button>
                 </div>
-            </section> -->
+            </section>
             <!-- List section -->
             <div class="message font-style text-center m-30" v-if="!listItems.length">
                 <h2>Complimenti!</h2>
@@ -64,19 +64,25 @@
                                 @click="removeItem(index)"></button>
                         </li>
                         <li class="list-group-item">
-                            <section class="item-user d-flex justify-content-center" v-if="isInputVisible">
-                                <div class="input-group mb-3 mt-3 w-100 ">
-                                    <input type="text" class="form-control" placeholder="... what to do?"
-                                        style="font-style:italic; font-family: 'Indie Flower', cursive;"
-                                        v-model="newItem" @keyup.enter="addNewItem" @keyup.esc="toggleAddInput">
-                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
-                                        style="font-family: 'Indie Flower', cursive;" @click="addNewItem"
-                                        @click="toggleAddInput"><strong>Add</strong>
-                                    </button>
-                                </div>
-                            </section>
-                            <button type="button" class="btn btn-secondary w-100" v-else @click="toggleAddInput">
-                                <i class="fas fa-plus me-2"></i>Add other things to do</button>
+                            <div v-if="listItems.length">
+                                <section class="item-user d-flex justify-content-center" v-if="isInputVisible">
+                                    <div class="input-group mb-3 mt-3 w-100 ">
+                                        <input type="text" class="form-control" placeholder="... what to do?"
+                                            style="font-style:italic; font-family: 'Indie Flower', cursive;"
+                                            v-model="newItem" @keyup.enter="addNewItem" @keyup.esc="toggleAddInput">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                                            style="font-family: 'Indie Flower', cursive;"
+                                            @click="toggleAddInput"><strong><i class="fas fa-undo-alt"></i></strong>
+                                        </button>
+                                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                                            style="font-family: 'Indie Flower', cursive;" @click="addNewItem"
+                                            @click="toggleAddInput"><strong>Add</strong>
+                                        </button>
+                                    </div>
+                                </section>
+                                <button type="button" class="btn btn-secondary w-100" v-else @click="toggleAddInput">
+                                    <i class="fas fa-plus me-2"></i>Add other things to do</button>
+                            </div>
                         </li>
                     </ul>
                 </div>
