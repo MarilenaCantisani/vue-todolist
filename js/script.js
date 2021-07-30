@@ -17,6 +17,7 @@ const root = new Vue({
         ],
         //* New things to do to list
         newItem: "",
+        isInputVisible: false,
 
     },
     methods: {
@@ -28,9 +29,14 @@ const root = new Vue({
         addNewItem() {
             if (this.newItem.trim() !== "") {
                 this.listItems.push(this.newItem);
+                this.toggleAddInput()
+            } else {
                 this.newItem = "";
             }
-
         },
+        toggleAddInput() {
+            this.isInputVisible = !this.isInputVisible;
+            this.newItem = "";
+        }
     },
 });

@@ -16,6 +16,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <!-- Link font awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Title and icon page -->
     <link rel="icon" href="./img/sticky-notes-2247431_1280.png">
     <title>To-do list</title>
@@ -35,7 +39,7 @@
         </header>
         <!-- * MAIN SECTION * -->
         <main class="container">
-            <!-- Form section -->
+            <!-- Form section
             <section class="item-user d-flex justify-content-center">
                 <div class="input-group mb-3 mt-5 w-75 ">
                     <input type="text" class="form-control" placeholder="... what to do?"
@@ -44,7 +48,7 @@
                         style="font-family: 'Indie Flower', cursive;" @click=" addNewItem"><strong>Add</strong>
                     </button>
                 </div>
-            </section>
+            </section> -->
             <!-- List section -->
             <div class="message font-style text-center m-30" v-if="!listItems.length">
                 <h2>Complimenti!</h2>
@@ -58,6 +62,21 @@
                             <span>{{ item }}</span>
                             <button type="button" class="btn-close ms-5" aria-label="Close"
                                 @click="removeItem(index)"></button>
+                        </li>
+                        <li class="list-group-item">
+                            <section class="item-user d-flex justify-content-center" v-if="isInputVisible">
+                                <div class="input-group mb-3 mt-3 w-100 ">
+                                    <input type="text" class="form-control" placeholder="... what to do?"
+                                        style="font-style:italic; font-family: 'Indie Flower', cursive;"
+                                        v-model="newItem">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                                        style="font-family: 'Indie Flower', cursive;" @click="addNewItem"
+                                        @click="toggleAddInput"><strong>Add</strong>
+                                    </button>
+                                </div>
+                            </section>
+                            <button type="button" class="btn btn-secondary w-100" v-else @click="toggleAddInput">
+                                <i class="fas fa-plus me-2"></i>Add other things to do</button>
                         </li>
                     </ul>
                 </div>
